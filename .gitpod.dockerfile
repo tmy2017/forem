@@ -1,6 +1,5 @@
 # to fix jetbrains gateway with rubymine 
-# last Ubuntu Focal (20.04) as per gitpod official info - https://www.gitpod.io/changelog/workpace-images-os-update-and-breaking-changes
-FROM gitpod/workspace-postgres:2023-01-16-03-31-28
+FROM gitpod/workspace-postgres:2022-06-09-20-58-43
 
 # Install the GitHub CLI
 RUN brew install gh
