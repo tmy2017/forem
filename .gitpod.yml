@@ -43,3 +43,28 @@ github:
     addLabel: false
     # add a check to pull requests (defaults to true)
     addCheck: true
+
+
+tasks:
+  # https://www.gitpod.io/docs/introduction/getting-started#a-gitpodyml-example
+  - name: tmy default npm instal so to utilize prebuild
+    init: |
+      cd final/server && npm install && cd ../client && npm install
+  - name: start final server
+    command: |
+      cd final/server; npm start
+  - name: start final client (must separate so to have two terminals)
+    command: |
+      cd final/client; npm start
+
+# enable useful plugins 
+jetbrains:
+  rubymine:
+    plugins:
+      - com.intellij.lang.jsgraphql
+      - org.sonarlint.idea
+      - com.intellij.ml.llm
+      - com.sourcegraph.jetbrains
+# sometimes caused workspace with jetbrains not able to start, hence comment out
+#    prebuilds:
+#      version: stable
