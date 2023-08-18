@@ -14,6 +14,7 @@ ports:
 tasks:
   - name: Forem Server
     before: >
+      cp ./.gitpod-AtWorkspaceDotConfig-jdk.table.xml /workspace/.config/JetBrains/RemoteDev-RM/_workspace_forem/options/jdk.table.xml &&
       redis-server &
       gp ports await 5432 &&
       sleep 1
@@ -45,7 +46,7 @@ github:
     addCheck: true
 
 
-# enable useful plugins 
+# enable useful plugins
 jetbrains:
   rubymine:
     plugins:
