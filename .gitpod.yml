@@ -35,14 +35,11 @@ tasks:
     # and to make setting effective, restart jetbrains ide backend by killing jb-launcher
     command: >
       # just in case to prevent my content got overwritten
-      sleep 3 &&
+      sleep 90 &&
       mkdir -p /workspace/.config/JetBrains/RemoteDev-RM/_workspace_forem/options/ &&
       cp ./.gitpod-AtWorkspaceDotConfig-jdk.table.xml /workspace/.config/JetBrains/RemoteDev-RM/_workspace_forem/options/ &&
       cp ./.gitpod-AtWorkspaceDotConfig-ide.general.xml /workspace/.config/JetBrains/RemoteDev-RM/_workspace_forem/options/ &&
-      killall -v jb-launcher &&
-      # try restart two times
-      sleep 10 && 
-      killall -v jb-launcher 
+      killall -v jb-launcher
 
 github:
   prebuilds:
