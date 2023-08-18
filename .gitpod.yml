@@ -13,16 +13,18 @@ ports:
 
 tasks:
   - name: Forem Server
-    # APP_DOMAIN = url WOULD change if using gitpod with PREBUILD, hence must generate at REAL workspace starts
-    #   TOOD: this will cause .env file keeps having new lines of APP_DOMAIN, but now I could not find "ONE TIME" but
-    #   not at init phase solution
     before: >
-      echo "APP_DOMAIN=\"$(gp url 3000 | cut -f 3 -d /)\"" >> .env &&
       redis-server &
       gp ports await 5432 &&
       sleep 1
     init: ./gitpod-init.sh
-    command: bin/startup
+    # APP_DOMAIN = url WOULD change if using gitpod with PREBUILD, hence must generate at REAL workspace starts
+    #   CAN NOT be at before, since .env file is created at init phase...
+    #   TOOD: this will cause .env file keeps having new lines of APP_DOMAIN, but now I could not find "ONE TIME" but
+    #   not at init phase solution
+    command: >
+      echo "APP_DOMAIN=\"$(gp url 3000 | cut -f 3 -d /)\"" >> .env &&
+      bin/startup
   - name: Open Site
     command: >
       gp ports await 3000 &&
