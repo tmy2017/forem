@@ -34,6 +34,8 @@ tasks:
     # tried at before key but jetbrain folder not exists yet. Now try here and use mkdir as fail-safe
     # and to make setting effective, restart jetbrains ide backend by killing jb-launcher
     command: >
+      # seems to sometimes revert back to old ui? now delay the copay and paste to see effect
+      sleep 3 &&
       mkdir -p /workspace/.config/JetBrains/RemoteDev-RM/_workspace_forem/options/ &&
       cp ./.gitpod-AtWorkspaceDotConfig-jdk.table.xml /workspace/.config/JetBrains/RemoteDev-RM/_workspace_forem/options/jdk.table.xml &&
       killall -v jb-launcher
