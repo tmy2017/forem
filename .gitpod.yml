@@ -14,7 +14,6 @@ ports:
 tasks:
   - name: Forem Server
     before: >
-      cp ./.gitpod-AtWorkspaceDotConfig-jdk.table.xml /workspace/.config/JetBrains/RemoteDev-RM/_workspace_forem/options/jdk.table.xml &&
       redis-server &
       gp ports await 5432 &&
       sleep 1
@@ -25,6 +24,13 @@ tasks:
       gp ports await 3000 &&
       printf "Waiting for local Forem development environment to load in the browser..." &&
       gp preview $(gp url 3000)
+  - name: fix RubyMine rvm issue
+    # tried at before key but jetbrain folder not exists yet. Now try here and use mkdir as fail-safe
+    # and to make setting effective, restart jetbrains ide backend by killing jb-launcher
+    command: >
+      mkdir -p /workspace/.config/JetBrains/RemoteDev-RM/_workspace_forem/options/ &&
+      cp ./.gitpod-AtWorkspaceDotConfig-jdk.table.xml /workspace/.config/JetBrains/RemoteDev-RM/_workspace_forem/options/jdk.table.xml &&
+      killall -v jb-launcher
 
 github:
   prebuilds:
