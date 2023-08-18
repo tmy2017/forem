@@ -54,7 +54,6 @@ yarn-error.log
 package-lock.json
 
 #Jetbrains Tools
-.idea/
 
 #Nova from Panic
 .nova/
