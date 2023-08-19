@@ -35,14 +35,12 @@ tasks:
     # and to make setting effective, restart jetbrains ide backend by killing jb-launcher
     # now remove incorrectly placed comment, and restart 2 times
     command: >
-      sleep 3 && 
+      sleep 3 &&
       mkdir -p /workspace/.config/JetBrains/RemoteDev-RM/_workspace_forem/options/ &&
-      cp ./.gitpod-AtWorkspaceDotConfig-jdk.table.xml /workspace/.config/JetBrains/RemoteDev-RM/_workspace_forem/options/ &&
-      cp ./.gitpod-AtWorkspaceDotConfig-ide.general.xml /workspace/.config/JetBrains/RemoteDev-RM/_workspace_forem/options/ &&
-      killall -v jb-launcher &&
-      sleep 10 &&
-      killall -v jb-launcher 
-    
+      cp ./.gitpod-AtWorkspaceDotConfig-jdk.table.xml /workspace/.config/JetBrains/RemoteDev-RM/_workspace_forem/options/jdk.table.xml &&
+      cp ./.gitpod-AtWorkspaceDotConfig-ide.general.xml /workspace/.config/JetBrains/RemoteDev-RM/_workspace_forem/options/ide.general.xml &&
+      killall -v jb-launcher
+
 
 github:
   prebuilds:
