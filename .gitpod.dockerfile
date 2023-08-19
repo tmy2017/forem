@@ -1,5 +1,5 @@
-# to fix jetbrains gateway with rubymine 
-FROM gitpod/workspace-postgres:2022-06-09-20-58-43
+# to fix jetbrains gateway with rubymine
+FROM gitpod/workspace-postgres
 
 # Install the GitHub CLI
 RUN brew install gh
